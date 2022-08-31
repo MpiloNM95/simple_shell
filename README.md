@@ -1,1 +1,1 @@
-Simple Shell Project
+Team Project

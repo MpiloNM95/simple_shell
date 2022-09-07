@@ -1,44 +1,45 @@
-.TH man 1 "07 September 2022" "0.32" "our own simple_shell man page"
+.TH simple_shell "1.0" "5 MAy 2022" "simple_shell man page" "simple_shell man page"
 .SH NAME
-.B our own simple_shell
-- We try to build our own simple shell.
+.B shell
+- a standard command interpreter similar to the GNU Bourne-Again SHell (sh).
 .SH SYNOPSIS
-It is the creation of a simple unix command interpreter that provides a user interface to access operating system services.
-.SH
-.SH
-.SH DESCRIPTION
-we use the following files to build our own simple shell:
+#include "holberton.h"
 .PP
--1.0.getppid.c (Write a program that prints the PID of the parent process.
-.PP -1.1._proc_sys_kernel_pid_max - Write a shell script that prints the maximum value a process ID can be.
-.PP-2.0.av.c - (Write a program that prints all the arguments, without using ac.)
-.PP-2.1.Read_Line.c - (getline) Write a program that prints "$ ", wait for the user to enter a command, prints it on the next line.
-.PP-2.2.command_line_to_av.c - (strtok) Write a function that splits a string and returns an array of each word of the string.
-.PP-3.execve.c - Executing a program. The system call execve allows a process to execute another program (man 2 execve).
-.PP-4.fork.c - The system call fork (man 2 fork) creates a new child process, almost identical to the parent (the process that calls fork).
-.PP-4.1.fork.c - Using the return value of fork, it is possible to know if the current process is the father or the child: fork will return 0 to the child, and the PID of the child to the father.
-.PP-5.wait.c - The wait system call (man 2 wait) suspends execution of the calling process until one of its children terminates.
-.PP-6.fork+wait+execve.c - Exercise: fork + wait + execve Write a program that executes the command ls -l /tmp in 5 different child processes.
-.PP-generate-authors.sh and AUTHORS. . File man_1_simple_shell - Manual for our simple shell
+.shell
+.PP
+shell [option_name] [argument ...]
+.SH DESCRIPTION
+shell is a command programming language that executes commands read from a terminal or a file. It is the program that is running when a user logs into the system.
+.SH INVOCATION
+If no arguments are present and if the standard input of the shell is connected to a terminal, the shell is considered an interactive shell.
+.PP
+If the standard input is used with a pipeline operator, |, to connect the command, such as echo "qwerty" | ./shell, then the shell is in non-interactive mode.
+.SH LEXICAL STRUCTURE
+The shell reads input in terms of lines from a file and breaks it up into words at whitespace (blanks and tabs).
+.SH RETURN
+Upon successful return, the shell will always return a 0 for success. If the shell program fails when a command is entered incorrectly or does not exist in the $PATH, then shell program will exit out of the child process and display an error message corresponding to the error the user committed and return with a prompt.
+.SH BUILT-INS
+.PP
+env - When entered, shell prints the current environment to standard output.
+.PP
+exit - When entered, shell exits out of the shell program.
 
-
-.SH RETURN VALUE
-.SHOur Shell must return the execution in standard output of the command typed by the user
-If the command doesn't exist, say "Doesn't exist".
-.SH EXAMPLES TEST
-we compare with printf function original our own _printf function with next examples:
-.SH
-.SH Examples
-.SH
-.SH
-.SH
-.SH
-.SH Results
-.SH
-.SH
-.SH
-.SH
-.SH ISSUES
-We have a issue in check #
-.SH AUTHORS
-Bongisisa Mona & Mpilo Mafu
+.SH FILES
+.I
+.sp
+$HOME/.profile
+.I
+.sp
+/etc/profile
+.I
+.sp
+/etc/shells
+.SH ALSO SEE
+.PP
+man sh, execve(2), environ
+.SH NOTES
+All files and code used in .shell were created and compiled on Ubuntu 14.04.4 LTS using GCC 4.8.4
+.SH BUGS
+There are many features and builtin commands that are not implimented in this simple shell such as aliases, cd, and logical operators. When 
+.SH AUTHOR
+Em432 & Joshman00

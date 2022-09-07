@@ -130,7 +130,7 @@ int checkbuiltins(char **av, char *buffer, int exitstatus)
 		free(buffer);
 		exit(exitstatus);
 	}
-	else 
+	else
 		return (0);
 }
 
